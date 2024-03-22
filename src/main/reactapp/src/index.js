@@ -15,11 +15,16 @@ import Library from './chapter3/Library';
 import Clock from './chapter4/Clock';
 // chapter5 실습
 import CommentList from './chapter5/CommentList';
+// chapter7 예제/실습
+import Counter from './chapter7/Counter';
+import UseStateList from './chapter7/UseStateList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-    <CommentList />
+    {/* <CommentList /> */}
+    {/* <Counter /> */}
+    <UseStateList />
     </React.StrictMode>
 )
 // 뿌리에 render링 할 거야.
