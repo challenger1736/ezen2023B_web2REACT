@@ -18,13 +18,32 @@ import CommentList from './chapter5/CommentList';
 // chapter7 예제/실습
 import Counter from './chapter7/Counter';
 import UseStateList from './chapter7/UseStateList';
+// chapter8 실습
+import ConfirmButton from './chapter8/ComfirmButton'
+// chapter9 실습
+import LandingPage from './chapter9/LandingPage'
+// chapter7 실습 useEffect 추가
+import Counter2 from './chapter7/UseStateList2';
+// chapter10 실습
+import AttendanceBook from './chapter10/AttendanceBook';
+// chapter11 실습
+import NameForm from './chapter11/NameForm';
+// import SignUp from './chapter11/SignUp';
+// chapter12 실슬
+import SignUp from './component/member/Signup';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
     {/* <CommentList /> */}
     {/* <Counter /> */}
-    <UseStateList />
+    {/* <UseStateList /> */}
+    {/* <ConfirmButton /> */}
+    {/* <LandingPage />*/}
+    {/* <Counter2 /> */}
+    {/* <AttendanceBook /> */}
+    {/* <NameForm/> */}
+    <SignUp />
     </React.StrictMode>
 )
 // 뿌리에 render링 할 거야.
