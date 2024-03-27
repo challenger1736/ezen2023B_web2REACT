@@ -19,8 +19,17 @@ export default function Signup(){
         // *
         let info = {memail : memail , mpassword : mpassword , mname : mname}
 
-        axios.post("http://localhost:8080/member/signup/post.do", info) // axios는 json으로 자동으로 보냄. Dto에 연결됨.
-            .then(response =>{console.log(response)})
+        axios.post("/member/signup/post.do", info) // axios는 json으로 자동으로 보냄. Dto에 연결됨.
+                        // 400번 대
+            .then(response =>{console.log(response) //200번 대
+                if(response.data){
+                    alert('회원가입 성공')
+                    window.location.href="/member/login"
+                }else{
+                    alert('회원가입 실패')
+                }
+            })
+            .catch(error => {console.log(error)}) // 500번 대
 
         /*
          axios.HTTP메소드명(url,data).then(응답매개변수 => {응답 실행문})

@@ -29,8 +29,15 @@ import AttendanceBook from './chapter10/AttendanceBook';
 // chapter11 실습
 import NameForm from './chapter11/NameForm';
 // import SignUp from './chapter11/SignUp';
-// chapter12 실슬
+// chapter12 실습
 import SignUp from './component/member/Signup';
+// chapter0 axios 실습
+import Axios컴포넌트 from './chapter0/Axios컴포넌트';
+// chapter0 route 실습
+import Route컴포넌트 from './chapter0/Route컴포넌트';
+
+// component 폴더
+import Index from './component/Index';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -43,7 +50,10 @@ root.render(
     {/* <Counter2 /> */}
     {/* <AttendanceBook /> */}
     {/* <NameForm/> */}
-    <SignUp />
+    {/* <SignUp /> */}
+    {/* <Axios컴포넌트 /> */}
+    {/* <Route컴포넌트 /> */}
+    <Index />
     </React.StrictMode>
 )
 // 뿌리에 render링 할 거야.
