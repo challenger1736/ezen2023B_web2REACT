@@ -23,7 +23,18 @@ export default function Header(props){
                 <li><Link to="/">홈</Link></li>
                 <li><Link to="/member/signup">회원가입</Link></li>
                 <li><Link to="/member/login">Login</Link></li>
+                <li><a href="javascript:void(0)" onClick={logout}>Logout</a></li>
             </ul>
         </div>
         </>)
+
+function logout(props){
+    axios.get('/member/logout/get.do')
+    .then(r=>{console.log(r); 
+        if(r){alert('로그아웃 성공'); window.location.href="/"}
+        else{alert('로그아웃 실패');} 
+        })
+    .catch(e=>{console.log(e)})
 }
+}
+

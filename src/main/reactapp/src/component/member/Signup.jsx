@@ -22,11 +22,13 @@ export default function Signup(){
         axios.post("/member/signup/post.do", info) // axios는 json으로 자동으로 보냄. Dto에 연결됨.
                         // 400번 대
             .then(response =>{console.log(response) //200번 대
-                if(response.data){
+                if(response.data>=3){
                     alert('회원가입 성공')
                     window.location.href="/member/login"
-                }else{
+                }else if(response.data==0){
                     alert('회원가입 실패')
+                }else if(response.data==1){
+                    alert('아이디 중복입니다.')
                 }
             })
             .catch(error => {console.log(error)}) // 500번 대

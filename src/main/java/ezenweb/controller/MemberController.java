@@ -14,7 +14,7 @@ public class MemberController {
     private MemberService memberService;
 
     @PostMapping("/signup/post.do") // 1. 회원가입
-    public boolean doSignUpPost(@RequestBody MemberDto memberDto){
+    public int doSignUpPost(@RequestBody MemberDto memberDto){
         System.out.println("memberDto = " + memberDto);
         return memberService.doSignUpPost(memberDto);
     }

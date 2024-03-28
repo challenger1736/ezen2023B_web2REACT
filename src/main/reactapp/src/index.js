@@ -38,6 +38,8 @@ import Route컴포넌트 from './chapter0/Route컴포넌트';
 
 // component 폴더
 import Index from './component/Index';
+import Calculator from './chapter12/Calculator';
+import ProfileCard from './chapter13/ProfileCard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -54,6 +56,8 @@ root.render(
     {/* <Axios컴포넌트 /> */}
     {/* <Route컴포넌트 /> */}
     <Index />
+    {/* <Calculator /> */}
+    {/* <ProfileCard /> */}
     </React.StrictMode>
 )
 // 뿌리에 render링 할 거야.
