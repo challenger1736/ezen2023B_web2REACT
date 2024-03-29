@@ -5,6 +5,7 @@ import ezenweb.model.entity.MemberEntity;
 import ezenweb.model.entity.ReplyEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.util.ArrayList;
@@ -15,9 +16,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @ToString
-public class MemberDto {
+public class MemberDto extends BaseTimeDto{
 
     private int mno;
     private String memail;
@@ -28,11 +29,9 @@ public class MemberDto {
     // - DTO를 엔티티로 변환하는 메소드 // 저장을 하기 위해
     public MemberEntity toEntity(){
         return MemberEntity.builder()
-                .mno(this.mno)
                 .memail(this.memail)
                 .mname(this.mname)
                 .mpassword(this.mpassword)
-                .mrol(this.mrol)
                 .build();
     }
 
