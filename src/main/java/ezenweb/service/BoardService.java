@@ -30,9 +30,8 @@ public class BoardService {
 
     @Autowired private ReplyEntityRepository replyEntityRepository;
     @Autowired private MemberService memberService;
-
     @Autowired
-    private BoardEntity boardEntity;
+    FileService fileService;
     // 1. C
     @Transactional
     public boolean postBoard(BoardDto boardDto){
@@ -53,6 +52,17 @@ public class BoardService {
             // fk 대입
         if(saveBoard.getBno()>=1){
             saveBoard.setMemberEntity(memberEntity);
+            //1. 첨부파일 처리
+            // 첨부파일이 존재하면
+            if(!boardDto.getUploadList().isEmpty()){ // 저장은 리포지토리에 엔티티 리스트를 넣으면 된다.
+                boolean fileName = fileService.fileUpload(boardDto.getUploadList(), saveBoard); // null이나 파일명을 준다.
+                if(fileName){ // 업로드 성공했으면
+                    return true;
+                }else{ // 업로드 문제 발생하면 글쓰기 취소
+                    return false;
+                }
+            }
+
             return true;
         }
         return false;
@@ -79,7 +89,7 @@ public class BoardService {
 //        return boardDtoList;
 
         // =============================2번째 방법 ==========================
-        return boardEntityRepository.findAll().stream().map((board)->{return boardEntity.toDto();}).collect(Collectors.toList());
+        return boardEntityRepository.findAll().stream().map((board)->{return board.toDto();}).collect(Collectors.toList());
     }
 
     /// 3. U

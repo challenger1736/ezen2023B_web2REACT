@@ -5,17 +5,16 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "boardImgTable")
+@Table(name = "boardimg")
 @Getter
 @Setter
 @ToString
-@SuperBuilder
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class BoardImgEntity extends BaseTime{
 
     @Id
-    @Column(columnDefinition = "longtext")
     String filename; // 파일명 uuid 쓸거라 중복 없다-- // 식별이 가능
 
     @ManyToOne
