@@ -7,6 +7,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "board")
@@ -36,6 +37,11 @@ public class BoardEntity extends BaseTime{ // DB의 테이블역할
     @Builder.Default
     private List<ReplyEntity> replyEntityList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "boardEntity")
+    @ToString.Exclude
+    @Builder.Default
+    private List<BoardImgEntity> boardImgEntityList = new ArrayList<>();
+
     public BoardDto toDto(){
         return BoardDto.builder()
                 .bno(this.bno)
@@ -45,6 +51,7 @@ public class BoardEntity extends BaseTime{ // DB의 테이블역할
                 .memail(this.memberEntity.getMemail())
                 .cdate(this.getCdate())
                 .udate(this.getUdate())
+                .bimgList(this.boardImgEntityList.stream().map((imgEntity)->{return imgEntity.getFilename();}).collect(Collectors.toList())) //List<엔티티>를 쓸 수 없으니, List<String> 받는 걸 만들어서 넣어줘야함.
                 .build();
     }
 }

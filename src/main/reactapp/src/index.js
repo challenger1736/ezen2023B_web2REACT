@@ -35,11 +35,15 @@ import SignUp from './component/member/Signup';
 import Axios컴포넌트 from './chapter0/Axios컴포넌트';
 // chapter0 route 실습
 import Route컴포넌트 from './chapter0/Route컴포넌트';
+// chapter13 예제/실습
+import ProfileCard from './chapter13/ProfileCard';
+// chapter14 예제/실습
+import DarkOrLight from './chapter14/DarkOrLight';
 
 // component 폴더
 import Index from './component/Index';
 import Calculator from './chapter12/Calculator';
-import ProfileCard from './chapter13/ProfileCard';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -58,6 +62,7 @@ root.render(
     <Index />
     {/* <Calculator /> */}
     {/* <ProfileCard /> */}
+    {/* <DarkOrLight /> */}
     </React.StrictMode>
 )
 // 뿌리에 render링 할 거야.

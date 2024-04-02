@@ -24,6 +24,8 @@ export default function Header(props){
                 <li><Link to="/member/signup">회원가입</Link></li>
                 <li><Link to="/member/login">Login</Link></li>
                 <li><a href="javascript:void(0)" onClick={logout}>Logout</a></li>
+                <li><Link to="/board/write">글쓰기</Link></li>
+                <li><Link to="/board">전체글보기</Link></li>
             </ul>
         </div>
         </>)

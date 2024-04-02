@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BoardService {
@@ -28,6 +30,9 @@ public class BoardService {
 
     @Autowired private ReplyEntityRepository replyEntityRepository;
     @Autowired private MemberService memberService;
+
+    @Autowired
+    private BoardEntity boardEntity;
     // 1. C
     @Transactional
     public boolean postBoard(BoardDto boardDto){
@@ -56,10 +61,25 @@ public class BoardService {
 
     // 2. R
     @Transactional
-    public List<Object> getBoard(){
-        List<BoardEntity> result = boardEntityRepository.findAll();
-        System.out.println("result = " + result);
-        return null;
+    public List<BoardDto> getBoard(){
+        // =============================1번째 방법 ==========================
+//        // 1. 리포지토리를 이용한 모든 엔티티( 테이블에 매핑 하기전 엔티티 )를 호출
+//        List<BoardEntity> result = boardEntityRepository.findAll( );
+//        // 2. Entity ---> Dto 변환한다
+//        List<BoardDto> boardDtoList = new ArrayList<>();
+//        // 1. 꺼내온 entity 을 순회한다
+//        for( int i = 0 ; i < result.size() ; i++ ){
+//            // 2. 하나씩 entity 꺼낸다
+//            BoardEntity boardEntity = result.get(i);
+//            // 3. 해당 엔티티를 dto로 변환한다.
+//            BoardDto boardDto = boardEntity.toDto();
+//            // 4. 변환된 dto를 리스트에 담는다.
+//            boardDtoList.add( boardDto );
+//        }
+//        return boardDtoList;
+
+        // =============================2번째 방법 ==========================
+        return boardEntityRepository.findAll().stream().map((board)->{return boardEntity.toDto();}).collect(Collectors.toList());
     }
 
     /// 3. U
