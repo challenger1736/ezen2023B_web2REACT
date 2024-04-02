@@ -9,7 +9,6 @@ export default function Signup(){
     // 2. memail 수정함수.
     const onChangeMemail = (e)=>{
         setMemail(e.target.value);
-        
     }
     // 3. 전송 함수
     const onSignup = (e)=>{
