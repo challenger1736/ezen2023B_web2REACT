@@ -1,23 +1,30 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import MediaCard from "./MediaCard"
+import { Pagination } from "@mui/material";
 
 export default function BoardList(){
     // 1. useState 변수
-    const [boardList, setBoardList] = useState([])
+    const [pageDto, setPageDto] = useState({page:1,count:0,data:[]}); // 객체를 받을거니 {} 중괄호
 
+    const handleChange = (event: e, value: value) => {
+        pageDto.page = value;
+        setPageDto({...pageDto});
+      };
     // 2.
     useEffect(()=>{
-        axios.get('/board/get.do')
+        
+        const info = {page:pageDto.page , view:4}
+        axios.get('/board/get.do',{params:info})
             .then(response=>{console.log(response)
-                setBoardList(response.data);
+                setPageDto(response.data);
             })
             .catch(error=>{console.log(error)})
-    },[])
+    },[ pageDto.page ])
 
     return(<>
-    <div style={{display:"flex"}}>
-            {boardList.map((board)=>{
+    <div style={{display:"flex", flexWrap : "wrap"}}>
+            {pageDto.data.map((board)=>{
                 
                     return(<div>
                         <MediaCard board={board}/>
@@ -25,5 +32,9 @@ export default function BoardList(){
                 
             })}
     </div>
+    <Pagination count={pageDto.count} page={pageDto.page} onChange={handleChange} />
     </>)
 }
+// count : 총 페이지수
+// page : 현재 페이지
+// handleChang : 콜백함수
