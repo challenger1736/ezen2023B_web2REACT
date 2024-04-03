@@ -1,10 +1,13 @@
 package ezenweb.controller;
 
 import ezenweb.model.dto.BoardDto;
+import ezenweb.model.dto.MemberDto;
 import ezenweb.model.dto.PageDto;
 import ezenweb.model.entity.BoardEntity;
+import ezenweb.model.repository.BoardEntityRepository;
 import ezenweb.service.BoardService;
 import ezenweb.service.FileService;
+import ezenweb.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +22,7 @@ public class BoardController {
     @Autowired private BoardService boardService;
 
     @Autowired private FileService fileService;
+
 
     @PostMapping("/post.do")
     public boolean postBoard( BoardDto boardDto){
@@ -41,7 +45,11 @@ public class BoardController {
     }
 
     @DeleteMapping("/delete.do")
-    public boolean deleteBoard(){
-        return boardService.deleteBoard();
+    public boolean deleteBoard(int bno){
+
+
+
+
+        return boardService.deleteBoard(bno);
     }
 }

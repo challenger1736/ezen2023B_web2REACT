@@ -32,12 +32,12 @@ public class BoardEntity extends BaseTime{ // DB의 테이블역할
     private MemberEntity memberEntity; // 해당 필드
 
     //양 방향 : 댓글들 넣어야함 @OneToMany(mappedBy 해당 테이블 fk [!자바!] 필드명
-    @OneToMany(mappedBy = "boardEntity")
+    @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.ALL)
     @ToString.Exclude // 해당 객체 호출시 해당 필드는 호출하지 않는다.
     @Builder.Default
     private List<ReplyEntity> replyEntityList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "boardEntity")
+    @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.ALL)
     @ToString.Exclude
     @Builder.Default
     private List<BoardImgEntity> boardImgEntityList = new ArrayList<>();

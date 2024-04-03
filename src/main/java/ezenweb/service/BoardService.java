@@ -40,6 +40,7 @@ public class BoardService {
     @Autowired private BoardImgRepository boardImgRepository;
     @Autowired
     FileService fileService;
+
     // 1. C
     @Transactional
     public boolean postBoard( BoardDto boardDto){ //  ======= 테스트 ==========
@@ -129,8 +130,19 @@ public class BoardService {
 
     // 4. D
     @Transactional
-    public boolean deleteBoard(){
-        boardEntityRepository.deleteById(1);
+    public boolean deleteBoard(int bno){
+
+        MemberDto memberDto = memberService.doLoginInfo();
+        if(memberDto==null){return false;}
+        // 2. 내 게시물인지 확인
+        Optional<BoardEntity> optionalBoardEntity =
+                boardEntityRepository.findById(bno);
+        if(optionalBoardEntity.isPresent()){
+            if(optionalBoardEntity.get().getMemberEntity().getMno()==memberDto.getMno()){
+                boardEntityRepository.deleteById(bno);
+                return true;
+            }
+        }
         return false;
     }
 }

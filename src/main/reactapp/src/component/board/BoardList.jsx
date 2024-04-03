@@ -11,15 +11,18 @@ export default function BoardList(){
         pageDto.page = value;
         setPageDto({...pageDto});
       };
-    // 2.
-    useEffect(()=>{
-        
+
+      const getBoard = () =>{
         const info = {page:pageDto.page , view:4}
         axios.get('/board/get.do',{params:info})
             .then(response=>{console.log(response)
                 setPageDto(response.data);
             })
             .catch(error=>{console.log(error)})
+      }
+    // 2.
+    useEffect(()=>{
+        getBoard()
     },[ pageDto.page ])
 
     return(<>
@@ -27,7 +30,7 @@ export default function BoardList(){
             {pageDto.data.map((board)=>{
                 
                     return(<div>
-                        <MediaCard board={board}/>
+                        <MediaCard board={board} getBoard={getBoard}/>
                     </div>)
                 
             })}
