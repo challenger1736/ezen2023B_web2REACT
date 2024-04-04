@@ -5,7 +5,7 @@ import MediaCard from "./MediaCard";
 
 export default function BoardWrite(props){
 
-    // 1. 재랜더링 고정함수 useRef()
+    // 1. 재랜더링 고정함수 useRef() = 얘를 쓰는 애는 따로 바꿔주지 않는 이상 새로 재랜더링되도 고정이다.
     const boardWriteFormRef = useRef(); // {current: undefined} // current에 들어가있음
     // console.log(boardWriteFormRef);
 
