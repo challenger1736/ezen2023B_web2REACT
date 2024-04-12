@@ -23,6 +23,8 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-websocket' // websocket
 
+    implementation 'org.springframework.boot:spring-boot-starter-security' // security
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 }
